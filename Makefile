@@ -15,7 +15,7 @@ $(EXE): main.go ## Builds the app executable.
 	go build $(LD_FLAGS) -o $@
 
 clean: ## Cleans the workspace artifacts.
-	rm $(EXE)
+	rm -rf $(DIR_BIN)/*
 
 package: $(EXE)
 	cd $(DIR_BIN) && tar -vcf $(TAR) $(APP_NAME)

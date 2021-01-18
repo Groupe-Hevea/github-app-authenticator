@@ -92,7 +92,7 @@ func main() {
 	}
 	json.Unmarshal([]byte(body), &response)
 
-	fmt.Println(response.ExpiresAt)
+	fmt.Println(response.Token)
 	os.Exit(0)
 }
 
