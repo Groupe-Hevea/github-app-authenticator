@@ -1,5 +1,7 @@
+APP_NAME=github-app-authenticator
 DIR_BIN=bin
 EXE=$(DIR_BIN)/github-app-authenticator
+TAR=$(APP_NAME).tar.gz
 
 .GIT_BRANCH=$(shell git rev-parse --abbrev-ref HEAD)
 .GIT_HASH=$(shell git rev-list -1 HEAD)
@@ -14,3 +16,6 @@ $(EXE): main.go ## Builds the app executable.
 
 clean: ## Cleans the workspace artifacts.
 	rm $(EXE)
+
+package: $(EXE)
+	cd $(DIR_BIN) && tar -vcf $(TAR) $(APP_NAME)
