@@ -93,6 +93,7 @@ func main() {
 	json.Unmarshal([]byte(body), &response)
 
 	fmt.Println(response.ExpiresAt)
+	os.Exit(0)
 }
 
 // ReadPEMPrivateKey reads the given file path and creates a new RSA PrivateKey

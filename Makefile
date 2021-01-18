@@ -1,10 +1,16 @@
-VERSION?=$(shell git rev-list -1 HEAD)
 DIR_BIN=bin
-EXE=github-app-authenticator
+EXE=$(DIR_BIN)/github-app-authenticator
 
-LD_FLAGS=-ldflags "-X main.Version=$VERSION"
+.GIT_BRANCH=$(shell git rev-parse --abbrev-ref HEAD)
+.GIT_HASH=$(shell git rev-list -1 HEAD)
 
-build: $(DIR_BIN)/$(BIN)
+VERSION?=${.GIT_BRANCH}-${.GIT_HASH}
+LD_FLAGS=--ldflags "-X main.Version=${VERSION}"
 
-$(DIR_BIN)/$(BIN): ## Builds the app executable
+build: $(EXE)
+
+$(EXE): main.go ## Builds the app executable.
 	go build $(LD_FLAGS) -o $@
+
+clean: ## Cleans the workspace artifacts.
+	rm $(EXE)
