@@ -28,8 +28,13 @@ type InstallationAccessToken struct {
 func main() {
 	argsWithoutProg := os.Args[1:]
 
-	if argsWithoutProg[0] == "-v" {
+	if argsWithoutProg[0] == "-h" {
 		fmt.Printf("github-app-authenticator - version %s\n", Version)
+		os.Exit(0)
+	}
+
+	if argsWithoutProg[0] == "-v" {
+		fmt.Printf("%s\n", Version)
 		os.Exit(0)
 	}
 
