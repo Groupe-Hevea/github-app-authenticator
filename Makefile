@@ -1,7 +1,7 @@
 APP_NAME=github-app-authenticator
 DIR_BIN=bin
-EXE=$(DIR_BIN)/github-app-authenticator
-TAR=$(APP_NAME).tar.gz
+EXE=$(DIR_BIN)/$(APP_NAME)
+ARCHIVE=$(APP_NAME).zip
 
 .GIT_BRANCH=$(shell git rev-parse --abbrev-ref HEAD)
 .GIT_HASH=$(shell git rev-list -1 HEAD)
@@ -18,4 +18,4 @@ clean: ## Cleans the workspace artifacts.
 	rm -rf $(DIR_BIN)/*
 
 package: $(EXE)
-	cd $(DIR_BIN) && tar -zcf $(TAR) $(APP_NAME)
+	cd $(DIR_BIN) && zip $(ARCHIVE) $(APP_NAME)
