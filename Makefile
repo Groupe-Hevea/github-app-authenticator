@@ -18,4 +18,4 @@ clean: ## Cleans the workspace artifacts.
 	rm -rf $(DIR_BIN)/*
 
 package: $(EXE)
-	cd $(DIR_BIN) && tar -vcf $(TAR) $(APP_NAME)
+	cd $(DIR_BIN) && tar -zcf $(TAR) $(APP_NAME)
